@@ -17,6 +17,7 @@ import edu.carleton.tim.jdsm.dependency.DependencyDSM;
 import edu.carleton.tim.jdsm.dependency.analysis.SVGOutput;
 import edu.carleton.tim.jdsm.dependency.provider.DependencyFinderDSMProvider;
 
+
 /**
  * This class can be used to create a DSM and calculate some other information
  * related to it, such as the visibility matrix, VFI, VFO, propagation cost,
@@ -127,7 +128,7 @@ public class DSMData
 	 */
 	public static void main(String[] args)
 	{
-		//DSMData data1 = new DSMData("../results/groovy2/dependencies.xml");
+		//DSMData data1 = new DSMData(true, "../results/dependencies.xml");
 		//DSMData data1 = new DSMData("../commonsio/dependencies.xml");
 		//DSMData data1 = new DSMData("../results/log4j/dependencies.xml");
 		DSMData data1 = new DSMData(true, "../results/tomcats/dependencies-6.0.16.xml");

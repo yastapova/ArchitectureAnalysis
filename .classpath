@@ -5,7 +5,7 @@
 	<classpathentry kind="lib" path="C:/Users/YuliyaA/workspace/ArchitectureAnalysis/lib/log4j.jar"/>
 	<classpathentry kind="lib" path="C:/Users/YuliyaA/workspace/ArchitectureAnalysis/lib/jblas-1.2.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/YuliyaA/workspace/ArchitectureAnalysis/lib/jdepend-2.9.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/YuliyaA/workspace/ArchitectureAnalysis/lib/jdsm-1.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/YuliyaA/workspace/ArchitectureAnalysis/lib/jscience.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/jDSM"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
