@@ -1,7 +1,0 @@
-<html>
-<body>
-<h1>ServletParam</h1>
-<dl>
-</dl>
-</body></html>
-
