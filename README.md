@@ -34,4 +34,4 @@
 </ul>
 
 <h3>Future Work</h3>
-<p>If I work on this in the future, I would focus mostly on the jDSM code in the hope of making the clustering part run faster. I'd also take a look at the other libraries it's dependent on, and see if there are updated versions, since I didn't look at that at all, beyond changing to jBLAS.</p>
+<p>If I work on this in the future, I would focus mostly on the jDSM code in the hope of making the clustering part run faster. I'd also take a look at the other libraries it's dependent on, and see if there are updated versions, since I didn't look at that at all, beyond changing to jBLAS. Also, I have to figure out how to use Ant, so that I can make some method of creating dependency XML files from my own code.</p>
