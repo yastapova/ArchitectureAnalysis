@@ -18,6 +18,8 @@ import edu.carleton.tim.jdsm.dependency.analysis.SVGOutput;
 import edu.carleton.tim.jdsm.dependency.provider.DependencyFinderDSMProvider;
 
 
+
+
 /**
  * This class can be used to create a DSM and calculate some other information
  * related to it, such as the visibility matrix, VFI, VFO, propagation cost,
@@ -131,7 +133,7 @@ public class DSMData
 		//DSMData data1 = new DSMData(true, "../results/dependencies.xml");
 		//DSMData data1 = new DSMData("../commonsio/dependencies.xml");
 		//DSMData data1 = new DSMData("../results/log4j/dependencies.xml");
-		DSMData data1 = new DSMData(true, "../results/tomcats/dependencies-6.0.16.xml");
+		DSMData data1 = new DSMData(true, "../results/tomcats/dependencies-5.0.30.xml");
 		//data1.printCounts();
 		
 		/*
@@ -180,7 +182,7 @@ public class DSMData
 		try
 		{
 			return DependencyFinderDSMProvider
-				.loadDesignStructureMatrix(depFilePath, "/.*/");
+				.loadDesignStructureMatrix(depFilePath, "/^org.apache.catalina.*/,/^org.apache.tomcat.*/");
 		}
 		catch (FileNotFoundException | JAXBException | SAXException | ParserConfigurationException e)
 		{

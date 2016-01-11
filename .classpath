@@ -6,6 +6,6 @@
 	<classpathentry kind="lib" path="C:/Users/YuliyaA/workspace/ArchitectureAnalysis/lib/jblas-1.2.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/YuliyaA/workspace/ArchitectureAnalysis/lib/jdepend-2.9.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/YuliyaA/workspace/ArchitectureAnalysis/lib/jscience.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jDSM"/>
+	<classpathentry kind="lib" path="C:/Users/YuliyaA/workspace/ArchitectureAnalysis/lib/jdsm-from-project.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
