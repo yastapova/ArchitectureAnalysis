@@ -1,7 +1,9 @@
 # ArchitectureAnalysis
-
+<h3>Intro</h3>
+<p>This project is part of my research on different methods and tools for the analysis of software architecture. The research focused mostly on finding dependencies within a project, creating Design Structure Matrices, and using that information to calculate various metrics. This is the code that I wrote for that purpose.</p>
 <p>Originally, I wrote my code to calculate the Core size of a system, since no other libraries or software I found did that yet. I also re-implemented the jDSM method of calculating the propagation cost, as well as added the option to calculate it without self-dependencies, because the jDSM code for this was excruciatingly slow, especially on large systems. I swapped in the jBLAS library for the jScience library to do matrix operations faster. Also, my code includes a simple runner for the JDepend library so that I can obtain presentable data.</p>
 
+<h3>Description of Metrics Used</h3>
 <h4>Size</h4>
 <ul>
 <li>Uses jDSM’s method for DSM creation, so this always has the same number of classes as jDSM.</li>
@@ -29,3 +31,6 @@
 <li>It necessitates knowledge and understanding of a large number of interdependencies all at once</li>
 </ul></li>
 </ul>
+
+<h3>Future Work</h3>
+<p>If I work on this in the future, I would focus mostly on the jDSM code in the hope of making the clustering part run faster. I'd also take a look at the other libraries it's dependent on, and see if there are updated versions, since I didn't look at that at all, beyond changing to jBLAS.</p>
