@@ -106,14 +106,16 @@ public class DSMData
 	 * Constructor for a DSM from an XML file provided as output
 	 * from DependencyFinder.
 	 * 
+	 * @param calcPropCost2  true to also calculate propagation cost with self-dependencies
 	 * @param depFilePath  the path to the XML dependencies file
+	 * @param filter  the filter to use when analyzing the DSM
 	 */
-	public DSMData(boolean calcPropCost2, String depFilePath)
+	public DSMData(boolean calcPropCost2, String depFilePath, String filter)
 	{
 		this.calcPropCost2 = calcPropCost2;
 		dep = null;
 		vis = null;
-		recalcDepMatrix(getDSMFromDep(depFilePath));
+		recalcDepMatrix(getDSMFromDep(depFilePath, filter));
 		calcVisibility();
 		calcFanInOut();
 		calcPropCost();
@@ -130,17 +132,11 @@ public class DSMData
 	 */
 	public static void main(String[] args)
 	{
-		//DSMData data1 = new DSMData(true, "../results/dependencies.xml");
-		//DSMData data1 = new DSMData("../commonsio/dependencies.xml");
-		//DSMData data1 = new DSMData("../results/log4j/dependencies.xml");
-		DSMData data1 = new DSMData(true, "../results/tomcats/dependencies-5.0.30.xml");
-		//data1.printCounts();
+		String path = "../results/pattern/dependencies.xml";
+		String filter = "/^com.aptima.netstorm.algorithms.aptima.*/,/^influent.idl.*/";
+		boolean calcPropCostSelf = true;
 		
-		/*
-		DoubleMatrix test = new DoubleMatrix(new double[][] {{0, 1.0, 0},{1.0, 0, 1.0},{0, 1.0, 0}});
-		DoubleMatrix test2 = MatrixFunctions.pow(test, 2);
-		System.out.println(test2);
-		*/
+		DSMData data1 = new DSMData(calcPropCostSelf, path, filter);
 	}
 	
 	/**
@@ -175,14 +171,15 @@ public class DSMData
 	 * it's not the same as the DSM before saving it. ???
 	 * 
 	 * @param depFilePath  path to the dependencies XML file
+	 * @param filter  the filter to use when analyzing the DSM
 	 * @returns  the DSM
 	 */
-	public DesignStructureMatrix<Dependency> getDSMFromDep(String depFilePath)
+	public DesignStructureMatrix<Dependency> getDSMFromDep(String depFilePath, String filter)
 	{
 		try
 		{
 			return DependencyFinderDSMProvider
-				.loadDesignStructureMatrix(depFilePath, "/^org.apache.catalina.*/,/^org.apache.tomcat.*/");
+				.loadDesignStructureMatrix(depFilePath, filter);
 		}
 		catch (FileNotFoundException | JAXBException | SAXException | ParserConfigurationException e)
 		{
@@ -330,7 +327,6 @@ public class DSMData
 	{
 		if(calcPropCost2)
 		{
-			//This is jDSM's original formula for calculating propagation cost.
 			logger.info("Calculating propagation cost with self-dependencies.");
 			
 			DoubleMatrix temp = DoubleMatrix.eye(nrFiles).add(vis);

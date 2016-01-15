@@ -67,7 +67,9 @@ public class JDependRunner
 	 */
 	public static void main(String[] args)
 	{
-		JDependRunner test = new JDependRunner("tomcats/bin/tomcat-4.1.37");
+		String path = "C:/Users/YuliyaA/Documents/codefacts-compare/wings-portal-4.0-SNAPSHOT.war";
+		
+		JDependRunner test = new JDependRunner(path);
 	}
 	
 	/**
