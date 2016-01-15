@@ -208,8 +208,7 @@ public class CycleComponent implements Comparable<CycleComponent>
 		}
 	}
 
-	/*
-	//currently unused. Also, not sure what constitutes equivalence yet.
+	
 	@Override
 	public boolean equals(Object o)
 	{
@@ -234,5 +233,4 @@ public class CycleComponent implements Comparable<CycleComponent>
 			}
 		}
 	}
-	*/
 }
