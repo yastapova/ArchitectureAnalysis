@@ -21,6 +21,7 @@
 <li>Propagation cost here has the same meaning as in jDSM.</li>
 <li>However, this propagation cost does not include self-dependencies.</li>
 <li>This propagation cost is calculated differently in the interest of speed, by summing all VFIs (or all VFOs) and dividing the sum by N^2 (where N is the dimension of the square visibility matrix).</li>
+<li>The option is also given to calculate propagation cost <i>with</i> self-dependencies, with the method that jDSM uses.</li>
 </ul>
 <h4>Core Size</h4>
 <ul>
