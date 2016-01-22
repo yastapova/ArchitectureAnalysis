@@ -39,7 +39,6 @@ import edu.carleton.tim.jdsm.dependency.provider.DependencyFinderDSMProvider;
  * 	<li><code>calcFanInOut()</code></li>
  * 	<li><code>calcPropCost()</code></li>
  * 	<li><code>calcPropCostSelf()</code> (Optional)</li>
- * 	<li><code>initializeCyclicComponents()</code></li>
  * 	<li><code>findCoreSize()</code></li>
  * </ol>
  * <br><br>
@@ -121,7 +120,6 @@ public class DSMData
 		calcPropCost();
 		calcPropCostSelf();
 		components = null;
-		initializeCyclicComponents();
 		coreSize = 0;
 		findCoreSize();
 	}
@@ -325,15 +323,22 @@ public class DSMData
 	 */
 	public void calcPropCostSelf()
 	{
-		if(calcPropCost2)
+		if(vis == null)
 		{
-			logger.info("Calculating propagation cost with self-dependencies.");
-			
-			DoubleMatrix temp = DoubleMatrix.eye(nrFiles).add(vis);
-			temp = temp.truth();
-			propCost2 = temp.sum() / (nrFiles * nrFiles);
-			
-			logger.info("Propagation Cost with self-dependencies: " + propCost2);
+			logger.info("Error: The visibility matrix has not been properly initialized.");
+		}
+		else
+		{
+			if(calcPropCost2)
+			{
+				logger.info("Calculating propagation cost with self-dependencies.");
+				
+				DoubleMatrix temp = DoubleMatrix.eye(nrFiles).add(vis);
+				temp = temp.truth();
+				propCost2 = temp.sum() / (nrFiles * nrFiles);
+				
+				logger.info("Propagation Cost with self-dependencies: " + propCost2);
+			}
 		}
 	}
 	
@@ -346,7 +351,7 @@ public class DSMData
 	 * <br><br>
 	 * The VFI and VFO must be properly calculated prior to calling this method.
 	 */
-	public void initializeCyclicComponents()
+	private void initializeCyclicComponents()
 	{
 		logger.info("Creating list of cyclic group components.");
 		if(vfi == null || vfo == null)
@@ -366,11 +371,11 @@ public class DSMData
 	}
 	
 	/**
-	 * Wrapper method that just calls findCounts() and findMaxCycleSize()
-	 * so that they can be together.
+	 * Wrapper method that groups and calls all Core-related methods together.
 	 */
 	public void findCoreSize()
 	{
+		initializeCyclicComponents();
 		findCounts();
 		findMaxCycleSize();
 	}
